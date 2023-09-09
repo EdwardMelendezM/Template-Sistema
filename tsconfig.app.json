@@ -8,9 +8,9 @@
     ]
   },
   "files": [
-    "src/main.ts"
+    "interface/src/main.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "interface/src/**/*.d.ts"
   ]
 }
