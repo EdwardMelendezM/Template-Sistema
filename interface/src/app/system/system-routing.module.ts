@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:"",
+    component: LayoutPageComponent,
+    children:[
+      { path: 'dashboard', component: DashboardPageComponent },
+      { path: 'setting', component: SettingsPageComponent },
+      { path: '**', redirectTo:"dashboard" },
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
