@@ -8,7 +8,7 @@ import { DataModule } from 'infrastructure/data.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [ 
     BrowserModule,
