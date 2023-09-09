@@ -25,35 +25,41 @@ export class TaskImplementationRespository extends TaskRepository{
     return this.http
       .get<TaskEntity[]>(`${this.baseUrl}/task`)
       .pipe(
-        map(entities => entities.map(entity => this.taskMapper.mapFrom(entity))),
-        catchError(()=>of([]))
+        map(entities => {
+          if (!Array.isArray(entities)) {
+            throw new Error('Los datos recibidos no son un arreglo.');
+          }
+          entities.forEach(entity => {
+            if (typeof entity.id !== 'number' || typeof entity.title !== 'string' || typeof entity.completed !== 'boolean') {
+              throw new Error('Los datos recibidos no tienen el formato esperado.');
+            }
+          });
+          return entities.map(entity => this.taskMapper.mapFrom(entity))
+        })
         )
   }
 
-  getTaskById(id: number): Observable<TaskModel| null> {
+  getTaskById(id: number): Observable<TaskModel> {
     return this.http
       .get<TaskEntity>(`${this.baseUrl}/task/${id}`)
       .pipe(
         map(entity => this.taskMapper.mapFrom(entity)),
-        catchError(() => of(null)) // Manejo de errores
       )
   }
 
-  createTask(task: TaskModel): Observable<TaskModel | null> {
+  createTask(task: TaskModel): Observable<TaskModel> {
     return this.http
       .post<TaskEntity>(`${this.baseUrl}/task/`, task)
       .pipe(
         map(this.taskMapper.mapFrom),
-        catchError(()=>of(null))
       )
   }
 
-  updateTask(id: number, task: TaskModel): Observable<TaskModel | null> {
+  updateTask(id: number, task: TaskModel): Observable<TaskModel> {
     return this.http
       .patch<TaskEntity>(`${this.baseUrl}/task/${id}`, task)
       .pipe(
         map(this.taskMapper.mapFrom),
-        catchError(()=>of(null))
       )
   }
 
@@ -61,8 +67,7 @@ export class TaskImplementationRespository extends TaskRepository{
     return this.http
       .delete(`${this.baseUrl}/task/${id}`)
       .pipe(
-         map(()=>true),
-         catchError(()=>of(false))
+        map(()=>true),
       )
   }
   
