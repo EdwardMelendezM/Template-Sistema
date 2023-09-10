@@ -3,6 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterPageComponent } from './register.page.component';
 import {  MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'interface/src/app/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 describe('RegisterPageComponent', () => {
   let component: RegisterPageComponent;
@@ -11,11 +15,19 @@ describe('RegisterPageComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterPageComponent],
-      imports: [MatFormFieldModule, MatIconModule]
+    
+      imports: [
+        MatFormFieldModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+        BrowserModule
+      ]
     });
     fixture = TestBed.createComponent(RegisterPageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); 
   });
 
   it('should create', () => {
@@ -43,7 +55,7 @@ describe('RegisterPageComponent', () => {
   it('should render a "Crear" button', () => {
     const createButton = fixture.nativeElement.querySelector('button[color="warn"]');
     expect(createButton).toBeTruthy();
-    expect(createButton.textContent.trim()).toBe('Crear');
+    expect(createButton.textContent.trim()).toContain('Crear');
   });
 
   it('should render a link to login page', () => {

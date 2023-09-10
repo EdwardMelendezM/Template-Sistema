@@ -1,5 +1,8 @@
 <div class="w-full">
-  <form [formGroup]="formRegister"  class="flex flex-column px-4 md:px-10">
+  <form
+    [formGroup]="formRegister" 
+    class="flex flex-column px-4 md:px-10"
+  >
     <mat-form-field>
       <mat-label>Nombre</mat-label>
       <input
@@ -22,13 +25,11 @@
     <mat-form-field>
       <mat-label>Contraseña</mat-label>
       <input
-        type="password"
-        matInput
+        type="password" 
+        matInput 
         formControlName="password"
       >
     </mat-form-field>
-
-
 
     <button
       mat-button
