@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http"
 import { TaskRepository } from "domain/task/repositories/task.repository";
 import { TaskImplementationRepositoryMapper } from "./mapper/task-repository.mapper";
 import { TaskModel } from "domain/task/models/task.model";
-import { Observable, catchError, map, of } from "rxjs";
+import { Observable, map } from "rxjs";
 import { TaskEntity } from "./entities/task-entity";
 import { environment } from "environment/environment";
 
