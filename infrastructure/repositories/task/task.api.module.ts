@@ -6,7 +6,7 @@ import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
 import { GetTaskByIdUseCase } from 'domain/task/usercases/get-task-by-id.usecase';
 import { UpdateTaskUseCase } from 'domain/task/usercases/update-task.usecase';
 import { DeleteTaskByIdUseCase } from 'domain/task/usercases/delete-task-by-id.usecase';
-import { TaskImplementationRespository } from './repositories/task/task-implementation.repository';
+import { TaskImplementationRespository } from './task-implementation.repository';
 
 
 const getTaskAllCaseCaseFactory = (useTask: TaskRepository) => new GetTasksUseCase(useTask)
@@ -54,4 +54,4 @@ export const deleteTaskByIdUseCaseProvider = {
     HttpClientModule
   ]
 })
-export class DataModule { }
+export class TaskApiModule { }
