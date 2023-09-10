@@ -5,6 +5,7 @@ import { SystemRoutingModule } from './system-routing.module';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
   ],
   imports: [
     CommonModule,
-    SystemRoutingModule
+    SystemRoutingModule,
+    MaterialModule
   ]
 })
 export class SystemModule { }
