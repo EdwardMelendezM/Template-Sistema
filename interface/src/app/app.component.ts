@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
       this.tasks = tasks;
       console.log(this.tasks);
     })
-    
   }
 
 }

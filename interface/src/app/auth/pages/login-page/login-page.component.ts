@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,12 +8,21 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router : Router
   ){} 
+
   formLogin = this.fb.group({
-    user: ["", [Validators.required]],
-    password: ["", [Validators.required]], 
+    user: ["", [
+      Validators.required,
+      Validators.minLength(3)
+    ]],
+    password: ["",[
+      Validators.required,
+      Validators.minLength(3)
+    ]], 
   })
 
   getValueForm(name:string){
@@ -23,9 +33,8 @@ export class LoginPageComponent {
     if (this.formLogin.valid) {
       const userValue = this.getValueForm('user');
       const passwordValue = this.getValueForm('password');
-      console.log('User:', userValue);
-      console.log('Password:', passwordValue);
-      // Puedes agregar lógica adicional aquí, como enviar los datos al servidor
+      // Aqui implementamos la llamada a la Api
+      this.router.navigate(['/system']);
     }
   }
 }
