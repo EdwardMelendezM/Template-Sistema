@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
-import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-root',

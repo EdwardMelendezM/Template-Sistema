@@ -1,1 +1,52 @@
-<p>register.page works!</p>
+<div class="w-full">
+  <form [formGroup]="formRegister"  class="flex flex-column px-4 md:px-10">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="name"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="user"
+      >
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+      >
+    </mat-form-field>
+
+
+
+    <button
+      mat-button
+      mat-flat-button
+      color="warn"
+      (click)="onSubmit() "
+    >
+      <mat-icon>save</mat-icon>
+      Crear
+    </button>
+
+    <div class="flex justify-content-end mt-5">
+      <a
+        class="enlace-register"
+        routerLink="/auth/login"
+      >
+        ¿Ya tienes cuenta? Ingresa
+      </a>
+    </div>
+  </form>
+</div>
