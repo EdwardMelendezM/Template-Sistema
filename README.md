@@ -12,3 +12,20 @@
     "completed":boolean
   }
 ```
+
+
+- Model user - login
+```
+  {
+    "user":number,
+    "password":string,
+  }
+```
+
+- Model user - register
+```
+  {
+    "user":number,
+    "name":boolean
+    "password":string,
+  }
