@@ -7,8 +7,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register.page/register.page.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TaskApiModule } from 'infrastructure/repositories/task/task.api.module';
 import { UserApiModule } from 'infrastructure/repositories/user/user.api.module';
+import { AuthService } from './service/auth.service';
 
 
 @NgModule({
@@ -23,7 +23,10 @@ import { UserApiModule } from 'infrastructure/repositories/user/user.api.module'
     AuthRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    UserApiModule
+    UserApiModule,
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class AuthModule { }

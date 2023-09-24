@@ -25,7 +25,7 @@
       mat-flat-button
       color="warn"
       (click)="onSubmit()"
-      [disabled]="isLoading"
+      [disabled]="this.authService.isLoadingValue()"
     >
       <mat-icon>save</mat-icon>
       Ingresar
