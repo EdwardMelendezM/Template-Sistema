@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LayoutPageComponent {
 
-  constructor(
-    private router: Router
-  ){}
+  router = inject(Router)
 
   public sidebarItems = [
     { label:"Inicio", icon:'home', url:'dashboard' },
@@ -19,6 +17,11 @@ export class LayoutPageComponent {
   ]
 
   onLogout(){
+    this.removeTokenFromLocalStorage()
     this.router.navigate(['auth/login'])
+  }
+
+  private removeTokenFromLocalStorage(): void {
+    localStorage.removeItem('token');
   }
 }

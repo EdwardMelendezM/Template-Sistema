@@ -7,6 +7,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../auth/service/auth.service';
 
 
 @NgModule({
