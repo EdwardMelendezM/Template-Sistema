@@ -1,7 +1,8 @@
 import { Injectable, effect, inject, signal } from '@angular/core';
-import { UserModel } from 'domain/user/models/user.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
+import { UserModel } from 'domain/user/models/user.model';
 import { LoginUseCase } from 'domain/user/usercases/login.usecase';
 import { RegisterUseCase } from 'domain/user/usercases/register.usecase';
  

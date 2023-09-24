@@ -6,7 +6,6 @@ import { MaterialModule } from 'interface/src/app/material/material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthService } from '../../service/auth.service';
 
-// Importa UserModel, Observable y of desde rxjs
 import { UserModel } from 'domain/user/models/user.model';
 import { Observable, of } from 'rxjs';
 import { LoginUseCase } from 'domain/user/usercases/login.usecase';
@@ -87,6 +86,4 @@ describe('RegisterPageComponent', () => {
     expect(loginLink).toBeTruthy();
     expect(loginLink.textContent.trim()).toBe('¿Ya tienes cuenta? Ingresa');
   });
-
-
 });

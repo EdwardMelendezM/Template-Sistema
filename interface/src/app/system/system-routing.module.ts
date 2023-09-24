@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+
 import { AuthGuard } from '../auth/guards/auth.guard';
 
 const routes: Routes = [

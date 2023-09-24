@@ -8,16 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  title = 'Template-sistema';
-  tasks: any [] = []
-
-  constructor(){}
-  
-  ngOnInit(): void {
-    // this.getTasksUseCase.execute().subscribe((tasks) => {
-    //   this.tasks = tasks;
-    //   console.log(this.tasks);
-    // })
-  }
+  ngOnInit(): void {}
 
 }
