@@ -7,6 +7,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register.page/register.page.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TaskApiModule } from 'infrastructure/repositories/task/task.api.module';
+import { UserApiModule } from 'infrastructure/repositories/user/user.api.module';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserApiModule
   ]
 })
 export class AuthModule { }

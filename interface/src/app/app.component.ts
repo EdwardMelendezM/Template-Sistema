@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
+
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,13 @@ export class AppComponent implements OnInit {
   title = 'Template-sistema';
   tasks: any [] = []
 
-  constructor(
-    private getTasksUseCase: GetTasksUseCase
-  ){}
+  constructor(){}
   
   ngOnInit(): void {
-    this.getTasksUseCase.execute().subscribe((tasks) => {
-      this.tasks = tasks;
-      console.log(this.tasks);
-    })
+    // this.getTasksUseCase.execute().subscribe((tasks) => {
+    //   this.tasks = tasks;
+    //   console.log(this.tasks);
+    // })
   }
 
 }
