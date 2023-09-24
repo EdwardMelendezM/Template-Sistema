@@ -35,7 +35,8 @@
       mat-button
       mat-flat-button
       color="warn"
-      (click)="onSubmit() "
+      (click)="onSubmit()"
+      [disabled]="authService.isLoadingValue()"
     >
       <mat-icon>save</mat-icon>
       Crear

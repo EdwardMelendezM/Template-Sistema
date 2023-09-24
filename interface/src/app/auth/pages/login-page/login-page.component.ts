@@ -8,9 +8,7 @@ import { AuthService } from '../../service/auth.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
-
-  isLoading = signal(false)
+export class LoginPageComponent {
 
   fb = inject(FormBuilder)
   authService = inject(AuthService)
@@ -27,9 +25,7 @@ export class LoginPageComponent implements OnInit {
   })
 
   
-  ngOnInit(): void {
-    this.isLoading.update(() => this.authService.isLoadingValue())
-  }
+
 
   getValueForm(name:string){
     return this.formLogin.get(name)!.value
