@@ -1,12 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RegisterPageComponent } from './register.page.component';
-import {  MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'interface/src/app/material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthService } from '../../service/auth.service';
+
+// Importa UserModel, Observable y of desde rxjs
+import { UserModel } from 'domain/user/models/user.model';
+import { Observable, of } from 'rxjs';
+import { LoginUseCase } from 'domain/user/usercases/login.usecase';
+import { RegisterUseCase } from 'domain/user/usercases/register.usecase';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+class MockLoginUseCase {
+  execute(user: UserModel): Observable<any> {
+    // Simula el comportamiento de LoginUseCase
+    // Puedes personalizarlo según tus necesidades de prueba
+    return of({ /* datos simulados */ });
+  }
+}
+
+class MockRegistersCase {
+  execute(user: UserModel): Observable<any> {
+    // Simula el comportamiento de LoginUseCase
+    // Puedes personalizarlo según tus necesidades de prueba
+    return of({ /* datos simulados */ });
+  }
+}
 
 describe('RegisterPageComponent', () => {
   let component: RegisterPageComponent;
@@ -15,19 +36,22 @@ describe('RegisterPageComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterPageComponent],
-    
       imports: [
         MatFormFieldModule,
-        MatIconModule,
         ReactiveFormsModule,
-        MaterialModule,
         BrowserAnimationsModule,
-        BrowserModule
+        NoopAnimationsModule,
+        MaterialModule, 
+        ToastrModule.forRoot(),
+      ],
+      providers: [
+        AuthService,
+        { provide: LoginUseCase, useClass: MockLoginUseCase },
+        { provide: RegisterUseCase, useClass: MockRegistersCase}
       ]
     });
     fixture = TestBed.createComponent(RegisterPageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); 
   });
 
   it('should create', () => {
@@ -63,5 +87,6 @@ describe('RegisterPageComponent', () => {
     expect(loginLink).toBeTruthy();
     expect(loginLink.textContent.trim()).toBe('¿Ya tienes cuenta? Ingresa');
   });
+
 
 });

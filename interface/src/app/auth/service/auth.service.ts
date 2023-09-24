@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginUseCase } from 'domain/user/usercases/login.usecase';
 import { RegisterUseCase } from 'domain/user/usercases/register.usecase';
-
+ 
 @Injectable({
   providedIn: 'root'
 })

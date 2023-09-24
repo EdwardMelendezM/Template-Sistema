@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserModel } from 'domain/user/models/user.model';
 import { AuthService } from '../../service/auth.service';
@@ -7,7 +7,7 @@ import { AuthService } from '../../service/auth.service';
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
-})
+}) 
 export class LoginPageComponent {
 
   fb = inject(FormBuilder)
