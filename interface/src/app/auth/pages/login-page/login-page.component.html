@@ -16,6 +16,7 @@
         type="password"
         matInput
         formControlName="password"
+        
       >
     </mat-form-field>
 
@@ -24,6 +25,7 @@
       mat-flat-button
       color="warn"
       (click)="onSubmit()"
+      [disabled]="isLoading"
     >
       <mat-icon>save</mat-icon>
       Ingresar

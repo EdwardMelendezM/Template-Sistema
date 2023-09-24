@@ -2,7 +2,6 @@ import { UserRepository } from "domain/user/repositories/user.repository";
 import { environment } from "environment/environment";
 import { HttpClient } from "@angular/common/http";
 import { Observable, map } from "rxjs";
-import { UserModel } from "domain/user/models/user.model";
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -11,8 +10,6 @@ import { Injectable } from "@angular/core";
 export class UserImplemetationRepository extends UserRepository{
 
   private baseUrl = environment.api_url
-  // private userMapper = new UserImplementatinoRespositoryMapper();
-
   constructor(
     private http: HttpClient
   ){ super(); }
@@ -21,17 +18,17 @@ export class UserImplemetationRepository extends UserRepository{
   login(params:{
     username:string,
     password:string
-  }):Observable<UserModel>{
+  }): Observable<{ error: boolean, token: string }>{
     return this.http
-      .post<UserModel>(`${this.baseUrl}/auth/login`,params)
+      .post<{ error: boolean, token: string }>(`${this.baseUrl}/auth/login`,params)
   }
 
   register(params: {
     username: string,
     name?: string,
     password: string
-  }): Observable<UserModel> {
+  }): Observable<{ error: boolean, token: string }> {
     return this.http
-      .post<UserModel>(`${this.baseUrl}/auth/register`,params)
+      .post<{ error: boolean, token: string }>(`${this.baseUrl}/auth/register`,params)
   }
 }
