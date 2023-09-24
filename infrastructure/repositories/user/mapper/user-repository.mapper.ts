@@ -6,7 +6,7 @@ export class UserImplementatinoRespositoryMapper extends Mapper<UserEntity, User
 
   override mapTo(params: UserModel): UserEntity {
     return {
-      user: params.user,
+      username: params.username,
       password: params.password,
       age: params.age,
       name: params.name
@@ -15,7 +15,7 @@ export class UserImplementatinoRespositoryMapper extends Mapper<UserEntity, User
 
    override mapFrom(params: UserEntity): UserModel {
     return {
-      user: params.user,
+      username: params.username,
       password: params.password,
       age: params.age,
       name: params.name

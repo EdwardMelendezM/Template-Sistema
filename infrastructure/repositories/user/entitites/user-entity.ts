@@ -1,6 +1,6 @@
 
 export interface UserEntity{
-  user:string
+  username:string
   password:string
   name?:string
   age?:number

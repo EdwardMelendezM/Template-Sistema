@@ -19,7 +19,7 @@ export class UserImplemetationRepository extends UserRepository{
 
 
   login(params:{
-    user:string,
+    username:string,
     password:string
   }):Observable<UserModel>{
     return this.http
@@ -27,7 +27,7 @@ export class UserImplemetationRepository extends UserRepository{
   }
 
   register(params: {
-    user: string,
+    username: string,
     name?: string,
     password: string
   }): Observable<UserModel> {

@@ -3,12 +3,12 @@ import { UserModel } from "../models/user.model";
 
 export abstract class UserRepository{
   abstract login(params:{
-    user:string,
+    username:string,
     password:string
   }):Observable<UserModel>
 
   abstract register(params:{
-    user:string,
+    username:string,
     name?:string,
     password:string
   }):Observable<UserModel>

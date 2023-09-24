@@ -1,5 +1,5 @@
 export interface UserModel{
-  user:string
+  username:string
   password:string
   name?:string
   age?:number
