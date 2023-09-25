@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserModel } from 'domain/user/models/user.model';
 import { AuthService } from '../../service/auth.service';
@@ -14,17 +14,33 @@ export class LoginPageComponent {
   authService = inject(AuthService)
 
   formLogin = this.fb.group({
-    username: ["", [
+    username: ['', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    password: ["",[
+    password: ['', [
       Validators.required,
       Validators.minLength(3)
-    ]],
-  })
+    ]], 
+  });
 
-  
+  constructor(){
+    effect(() => {
+      this.disabledInput()
+    });
+  }
+
+  disabledInput(){
+    if (this.authService.isLoadingValue()){
+      this.formLogin.get('username')?.disable()
+      this.formLogin.get('password')?.disable()
+    }else{
+      this.formLogin.get('username')?.enable()
+      this.formLogin.get('password')?.enable()
+    }
+    console.log("Consumiendo api");
+    
+  }
 
 
   getValueForm(name:string){
@@ -42,6 +58,8 @@ export class LoginPageComponent {
       username: userValue,
       password: passwordValue
     }
+
     this.authService.login(body)
+  
   }
 }

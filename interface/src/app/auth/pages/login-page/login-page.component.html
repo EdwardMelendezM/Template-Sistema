@@ -16,7 +16,6 @@
         type="password"
         matInput
         formControlName="password"
-        
       >
     </mat-form-field>
 
@@ -25,7 +24,7 @@
       mat-flat-button
       color="warn"
       (click)="onSubmit()"
-      [disabled]="this.authService.isLoadingValue()"
+      [disabled]="authService.isLoadingValue()"
     >
       <mat-icon>save</mat-icon>
       Ingresar
