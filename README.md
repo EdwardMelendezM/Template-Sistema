@@ -4,8 +4,13 @@
 - Domain
   - Repository
   - Usecase
+  - Model
 - Infrastructure
+  - implement repository
 
+- Use Case
+  - implementt usecase
+  
 ## Task
 - Esto consumiendo una api
 - http://localhost:3000/task
