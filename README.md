@@ -1,5 +1,11 @@
 # TemplateSistema
 
+## Clean Arquitecture
+- Domain
+  - Repository
+  - Usecase
+- Infrastructure
+
 ## Task
 - Esto consumiendo una api
 - http://localhost:3000/task
