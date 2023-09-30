@@ -11,6 +11,12 @@
 - Use Case
   - implementt usecase
   
+## End2end test
+- Cypress
+
+## Unit test
+- Jasmin
+
 ## Task
 - Esto consumiendo una api
 - http://localhost:3000/task
