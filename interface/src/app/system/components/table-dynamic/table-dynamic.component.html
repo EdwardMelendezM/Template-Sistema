@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="flex">
+    <button class="btn-primary">
+      Atras
+    </button>
+    <div class="space-white"></div>
+    <button (click)="addRow()" class="btn-primary">
+      +
+    </button>
+    <button (click)="onSubmit()" class="btn-primary">
+      Enviar
+    </button>
+  </div>
+  <form [formGroup]="tableForm">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="rows">
+        <tr *ngFor="let row of rowsArray.controls; let i = index" [formGroupName]="i">
+          <td>
+            {{i}}
+          </td>
+          <td>
+            <input formControlName="name">
+          </td>
+          <td>
+            <input formControlName="email">
+          </td>
+          <td>
+            <input formControlName="phone">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </form>
+</div>

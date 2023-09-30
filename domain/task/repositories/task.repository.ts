@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 import { TaskModel } from "../models/task.model";
+import { ResponseBody } from "../dtype";
 
 
 /**
@@ -7,7 +8,7 @@ import { TaskModel } from "../models/task.model";
  * Defino esta clase para ser implementada por clases concretas en las capas externas
  */
 export abstract class TaskRepository {
-  abstract getAllTasks(): Observable<TaskModel[]>
+  abstract getAllTasks(): Observable<ResponseBody>
 
   abstract getTaskById(id: number): Observable<TaskModel>
 
