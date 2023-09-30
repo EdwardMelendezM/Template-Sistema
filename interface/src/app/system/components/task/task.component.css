@@ -1,0 +1,22 @@
+.container{
+  margin-top: 11px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.input-task{
+  padding: 8px 16px;
+  border-radius: 10px;
+  outline: none;
+}
+.container-task{
+  margin-top: 16px;
+}
+.task{
+  display: flex;
+  justify-content: space-between;
+  padding: 9px;
+}

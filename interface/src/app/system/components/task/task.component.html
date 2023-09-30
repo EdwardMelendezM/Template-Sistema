@@ -1,1 +1,15 @@
-<p>task works!</p>
+<div class="container">
+    <h1>Task</h1>
+  <input
+    type="text"
+    class="input-task"
+    placeholder="Ingrese su tarea">
+  <div class="container-task">
+    <div *ngFor="let task of tasks" class="task">
+      <div class="">
+        {{task.title}}
+      </div>
+      <input type="checkbox" name="" id="">
+    </div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
+import { TaskModel } from "./models/task.model"
+
 export interface ResponseBody {
-  data: any[]
+  data: TaskModel[] | null
   error: boolean
   res: any
 }

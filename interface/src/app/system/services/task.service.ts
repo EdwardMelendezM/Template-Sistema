@@ -6,22 +6,18 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService implements OnInit{
+export class TaskService{
 
   
   private taskUseCase = inject(GetTasksUseCase)
   private toast = inject(ToastrService)
 
-  taskList?: any = []
-  ngOnInit(): void {
-    this.getTask()
-  }
+  taskList: TaskModel[] | null =  null
 
   getTask(){
     this.taskUseCase.execute().subscribe({
       next:(res)=>{
         if(!res.error){
-          console.log(res.data);
           
           this.taskList = res.data
           return
@@ -32,6 +28,8 @@ export class TaskService implements OnInit{
         this.toast.error('Algo malo ha sucedido')
       }
     })
+  }
+  private saveTask(){
   }
 
   get tasks(){
