@@ -13,12 +13,6 @@ export class TaskComponent implements OnInit {
   
   private taskService = inject(TaskService)
 
-
-  // constructor(){
-  //   effect(() => {
-  //   });
-  // }
-
   ngOnInit() {
     this.taskService.getTask()
   }

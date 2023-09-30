@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
 
 import { TaskRepository } from "domain/task/repositories/task.repository";
-import { TaskImplementationRepositoryMapper } from "./mapper/task-repository.mapper";
 import { TaskModel } from "domain/task/models/task.model";
 import { Observable, map } from "rxjs";
 import { TaskEntity } from "./entities/task-entity";
@@ -27,24 +26,24 @@ export class TaskImplementationRespository extends TaskRepository{
       .get<ResponseBody>(`${this.baseUrl}/task`)
   }
 
-  getTaskById(id: number): Observable<TaskModel> {
+  getTaskById(id: number): Observable<ResponseBody> {
     return this.http
-      .get<TaskEntity>(`${this.baseUrl}/task/${id}`)
+      .get<ResponseBody>(`${this.baseUrl}/task/${id}`)
   }
 
-  createTask(task: TaskModel): Observable<TaskModel> {
+  createTask(task: TaskModel): Observable<ResponseBody> {
     return this.http
-      .post<TaskEntity>(`${this.baseUrl}/task/`, task)
+      .post<ResponseBody>(`${this.baseUrl}/task/`, task)
   }
 
-  updateTask(id: number, task: TaskModel): Observable<TaskModel> {
+  updateTask(task: TaskModel): Observable<ResponseBody> {
     return this.http
-      .patch<TaskEntity>(`${this.baseUrl}/task/${id}`, task)
+      .patch<ResponseBody>(`${this.baseUrl}/task/`, task)
   }
 
-  deleteTask(id: number): Observable<any> {
+  deleteTask(id: number): Observable<ResponseBody> {
     return this.http
-      .delete(`${this.baseUrl}/task/${id}`)
+      .delete<ResponseBody>(`${this.baseUrl}/task/${id}`)
   }
   
 }

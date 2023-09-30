@@ -10,11 +10,11 @@ import { ResponseBody } from "../dtype";
 export abstract class TaskRepository {
   abstract getAllTasks(): Observable<ResponseBody>
 
-  abstract getTaskById(id: number): Observable<TaskModel>
+  abstract getTaskById(id: number): Observable<ResponseBody>
 
-  abstract createTask(task: TaskModel): Observable<TaskModel>
+  abstract createTask(task: TaskModel): Observable<ResponseBody>
 
-  abstract updateTask(id: number, task: TaskModel): Observable<TaskModel>
+  abstract updateTask(task: TaskModel): Observable<ResponseBody>
 
-  abstract deleteTask(id: number): Observable<boolean>
+  abstract deleteTask(id: number): Observable<ResponseBody>
 }
