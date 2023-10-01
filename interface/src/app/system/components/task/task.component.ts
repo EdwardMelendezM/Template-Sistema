@@ -14,12 +14,11 @@ import { TaskModalEditComponent } from '../task-modal-edit/task-modal-edit.compo
 
 export class TaskComponent implements OnInit {
 
-  private modalService = inject(NgbModal)
   
+  private modalService = inject(NgbModal)
   private taskService = inject(TaskService)
   private fb = inject(FormBuilder)
 
-  isActiveEdit = false
 
   formTask = this.fb.group({
     title: ['', [
@@ -68,8 +67,10 @@ export class TaskComponent implements OnInit {
   editTask(task: TaskModel){
     const modalRef = this.modalService.open(TaskModalEditComponent);
     modalRef.componentInstance.data = task;
-    // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
-    //   console.log(receivedEntry);
-    // })
+    modalRef.result.then((result) => {
+      if (result) {
+        this.taskService.updateTask(result)
+      }
+    });
   }
 }

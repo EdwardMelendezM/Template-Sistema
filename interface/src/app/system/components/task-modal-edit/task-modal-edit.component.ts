@@ -1,6 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { TaskModel } from 'domain/task/models/task.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-modal-edit',
@@ -11,15 +13,24 @@ export class TaskModalEditComponent {
 
   private activeModal = inject(NgbActiveModal)
   private fb = inject(FormBuilder)
-  @Input() data: string = ''
+  private toast = inject(ToastrService)
+
+  @Input() data?: TaskModel
 
   formEditTask = this.fb.group({
-    title: [null, [Validators.required]],
-    completed: [null, [Validators.required]],
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    completed: [false],
   })
 
   ngOnInit(): void {
-    console.log('recibiendo', this.data);
+    this.formEditTask.setValue({
+      title:this.data?.title ?? '',
+      completed:this.data?.completed ?? false
+    });
+  }
+
+  getValueForm() {
+    return this.formEditTask.getRawValue()
   }
 
   onCloseModal() {
@@ -27,7 +38,16 @@ export class TaskModalEditComponent {
   }
 
   onConfirm() {
-    console.log("Editando");
-    
+    if (this.formEditTask.invalid){
+      this.formEditTask.markAllAsTouched()
+      this.toast.error('Complete el formulario')
+      return
+    }
+    const body = {
+      id: this.data?._id,
+      title: this.getValueForm().title!,
+      completed: this.getValueForm().completed!
+    }
+    this.activeModal.close(body);
   }
 }

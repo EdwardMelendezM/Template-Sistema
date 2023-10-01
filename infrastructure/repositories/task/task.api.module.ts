@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+
 import { TaskRepository } from 'domain/task/repositories/task.repository';
+
 import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
 import { GetTaskByIdUseCase } from 'domain/task/usercases/get-task-by-id.usecase';
 import { UpdateTaskUseCase } from 'domain/task/usercases/update-task.usecase';
 import { DeleteTaskByIdUseCase } from 'domain/task/usercases/delete-task-by-id.usecase';
+
 import { TaskImplementationRespository } from './task-implementation.repository';
 import { CreateTaskUseCase } from 'domain/task/usercases/create-task.usecase';
 

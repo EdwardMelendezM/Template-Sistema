@@ -1,8 +1,9 @@
-import { Injectable, OnInit, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { TaskModel } from 'domain/task/models/task.model';
 import { CreateTaskUseCase } from 'domain/task/usercases/create-task.usecase';
 import { DeleteTaskByIdUseCase } from 'domain/task/usercases/delete-task-by-id.usecase';
 import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
+import { UpdateTaskUseCase } from 'domain/task/usercases/update-task.usecase';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -10,11 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TaskService{
 
-  
   private taskUseCaseGetAll = inject(GetTasksUseCase)
   private taskUseCaseCreate = inject(CreateTaskUseCase)
-  private taskUseCaseDelete= inject(DeleteTaskByIdUseCase)
-  
+  private taskUseCaseDelete = inject(DeleteTaskByIdUseCase)
+  private taskUseCaseUpdate = inject(UpdateTaskUseCase)
 
   private toast = inject(ToastrService)
 
@@ -51,6 +51,18 @@ export class TaskService{
     this.taskUseCaseDelete.execute(id).subscribe({
       next: () => {
         this.toast.success('La tarea fue eliminado!!')
+        this.getTask()
+      },
+      error: () => {
+        this.toast.error('Algo sucedio mal!!')
+      }
+    })
+  }
+
+  updateTask(task: TaskModel){
+    this.taskUseCaseUpdate.execute(task).subscribe({
+      next: () => {
+        this.toast.success('La tarea fue actualizada!!')
         this.getTask()
       },
       error: () => {
