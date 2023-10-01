@@ -1,0 +1,18 @@
+.w-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.enlace-register:hover {
+  opacity: 0.7;
+}
+
+.enlace-register {
+  text-decoration: none;
+  color: rgb(66, 29, 29);
+  transition: 0.2s ease-in;
+
+}

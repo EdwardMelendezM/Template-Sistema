@@ -4,6 +4,10 @@
   height: 100vh;
   color: #fff;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .imagen-logo{
