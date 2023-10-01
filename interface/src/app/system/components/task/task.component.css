@@ -52,3 +52,8 @@
   padding: 3px;
   border-radius: 10px;
 }
+.center-custom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

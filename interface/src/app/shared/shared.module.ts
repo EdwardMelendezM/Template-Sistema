@@ -6,6 +6,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
+import { ModalConfirmDeleteComponent } from './components/modal-confirm-delete/modal-confirm-delete.component';
 
 
 @NgModule({
@@ -13,14 +14,16 @@ import { ButtonComponent } from './components/button/button.component';
     ErrorPageComponent,
     ModalComponent,
     InputComponent,
-    ButtonComponent
+    ButtonComponent,
+    ModalConfirmDeleteComponent
   ],
   imports: [
     CommonModule,
     SharedRoutingModule
   ],
   exports:[
-    ModalComponent
+    ModalComponent,
+    ModalConfirmDeleteComponent
   ]
 })
 export class SharedModule { }

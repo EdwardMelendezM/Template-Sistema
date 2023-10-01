@@ -9,8 +9,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalComponent implements OnInit {
 
   private activeModal = inject(NgbActiveModal)
-
-
   @Input() data: string = ''
 
   onCloseModal() {

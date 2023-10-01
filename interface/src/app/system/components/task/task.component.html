@@ -7,7 +7,6 @@
       placeholder="Ingrese su tarea"
       formControlName="title"
       (keyup.enter)="addTask()" >
-
   </form>
   <div class="container-task">
     <div *ngFor="let task of tasks" class="task">
@@ -16,12 +15,12 @@
         <p class="task-title" >{{task.title}}</p>
       </div>
       <div class="task-control">
-        <button class="btn" (click)="deleteTask(task?._id)">
+        <button class="btn btn-outline-danger center-custom" (click)="deleteTask(task?._id)">
           <span class="material-symbols-outlined">
             delete
           </span>
         </button>
-        <button class="btn" (click)="editTask(task?._id)">
+        <button class="btn btn-outline-secondary center-custom" (click)="editTask(task)">
           <span class="material-symbols-outlined">
             edit
           </span>

@@ -1,9 +1,10 @@
-import { Component, OnInit, effect, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskModel } from 'domain/task/models/task.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from 'interface/src/app/shared/components/modal/modal.component';
+import { ModalConfirmDeleteComponent } from 'interface/src/app/shared/components/modal-confirm-delete/modal-confirm-delete.component';
+import { TaskModalEditComponent } from '../task-modal-edit/task-modal-edit.component';
 
 @Component({
   selector: 'app-task',
@@ -52,16 +53,21 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(id: string | undefined){
-    
-    if(!id){
+    if (!id) {
       throw new Error('No existe id para este task')
     }
-    this.taskService.deleteTask(id)
+    const modalRef = this.modalService.open(ModalConfirmDeleteComponent);
+    modalRef.result.then((result) => {
+      if (result) {
+        this.taskService.deleteTask(id)
+      }
+    });
+
   }
   
-  editTask(id: string| undefined){
-    const modalRef = this.modalService.open(ModalComponent);
-    modalRef.componentInstance.data = 'Hello modal';
+  editTask(task: TaskModel){
+    const modalRef = this.modalService.open(TaskModalEditComponent);
+    modalRef.componentInstance.data = task;
     // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
     //   console.log(receivedEntry);
     // })
