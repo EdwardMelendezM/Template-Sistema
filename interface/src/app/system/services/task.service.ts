@@ -1,5 +1,7 @@
 import { Injectable, OnInit, inject, signal } from '@angular/core';
 import { TaskModel } from 'domain/task/models/task.model';
+import { CreateTaskUseCase } from 'domain/task/usercases/create-task.usecase';
+import { DeleteTaskByIdUseCase } from 'domain/task/usercases/delete-task-by-id.usecase';
 import { GetTasksUseCase } from 'domain/task/usercases/get-tasks.usecase';
 import { ToastrService } from 'ngx-toastr';
 
@@ -9,15 +11,20 @@ import { ToastrService } from 'ngx-toastr';
 export class TaskService{
 
   
-  private taskUseCase = inject(GetTasksUseCase)
+  private taskUseCaseGetAll = inject(GetTasksUseCase)
+  private taskUseCaseCreate = inject(CreateTaskUseCase)
+  private taskUseCaseDelete= inject(DeleteTaskByIdUseCase)
+  
+
   private toast = inject(ToastrService)
 
   taskList: TaskModel[] | null =  null
 
   getTask(){
-    this.taskUseCase.execute().subscribe({
+    this.taskUseCaseGetAll.execute().subscribe({
       next:(res)=>{
         if(!res.error){
+          console.log("Cargando data");
           
           this.taskList = res.data
           return
@@ -25,11 +32,31 @@ export class TaskService{
         this.toast.error('Ha sucedido un error')
       },
       error:()=>{
-        this.toast.error('Algo malo ha sucedido')
+        this.toast.error('Algo sucedio mal!!')
       }
     })
   }
-  private saveTask(){
+  saveTask(params: TaskModel){
+    this.taskUseCaseCreate.execute(params).subscribe({
+      next: () => {
+        this.toast.success('Creado correctamente')
+        this.getTask()
+      },
+      error: () => {
+        this.toast.error('Algo sucedio mal!!')
+      }
+    })
+  }
+  deleteTask(id: string){
+    this.taskUseCaseDelete.execute(id).subscribe({
+      next: () => {
+        this.toast.success('La tarea fue eliminado!!')
+        this.getTask()
+      },
+      error: () => {
+        this.toast.error('Algo sucedio mal!!')
+      }
+    })
   }
 
   get tasks(){

@@ -41,7 +41,7 @@ export class TaskImplementationRespository extends TaskRepository{
       .patch<ResponseBody>(`${this.baseUrl}/task/`, task)
   }
 
-  deleteTask(id: number): Observable<ResponseBody> {
+  deleteTask(id: string): Observable<ResponseBody> {
     return this.http
       .delete<ResponseBody>(`${this.baseUrl}/task/${id}`)
   }

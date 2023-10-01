@@ -16,5 +16,5 @@ export abstract class TaskRepository {
 
   abstract updateTask(task: TaskModel): Observable<ResponseBody>
 
-  abstract deleteTask(id: number): Observable<ResponseBody>
+  abstract deleteTask(id: string): Observable<ResponseBody>
 }
