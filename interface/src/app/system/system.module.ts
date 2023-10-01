@@ -13,6 +13,8 @@ import { UserComponent } from './components/user/user.component';
 import { TableDynamicComponent } from './components/table-dynamic/table-dynamic.component';
 import { TaskService } from './services/task.service';
 import { TaskApiModule } from 'infrastructure/repositories/task/task.api.module';
+import { ModalComponent } from '../shared/components/modal/modal.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { TaskApiModule } from 'infrastructure/repositories/task/task.api.module'
     SystemRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    TaskApiModule
+    TaskApiModule,
+    SharedModule
   ],
   providers:[
     TaskService

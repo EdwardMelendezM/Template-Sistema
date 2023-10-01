@@ -2,6 +2,8 @@ import { Component, OnInit, effect, inject } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskModel } from 'domain/task/models/task.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from 'interface/src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-task',
@@ -10,6 +12,8 @@ import { TaskModel } from 'domain/task/models/task.model';
 })
 
 export class TaskComponent implements OnInit {
+
+  private modalService = inject(NgbModal)
   
   private taskService = inject(TaskService)
   private fb = inject(FormBuilder)
@@ -56,6 +60,10 @@ export class TaskComponent implements OnInit {
   }
   
   editTask(id: string| undefined){
-    this.isActiveEdit = !this.isActiveEdit
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.data = 'Hello modal';
+    // modalRef.componentInstance.passEntry.subscribe((receivedEntry) => {
+    //   console.log(receivedEntry);
+    // })
   }
 }

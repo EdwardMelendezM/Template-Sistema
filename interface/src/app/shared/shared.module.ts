@@ -18,6 +18,9 @@ import { ButtonComponent } from './components/button/button.component';
   imports: [
     CommonModule,
     SharedRoutingModule
+  ],
+  exports:[
+    ModalComponent
   ]
 })
 export class SharedModule { }
