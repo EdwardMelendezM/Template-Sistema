@@ -1,1 +1,6 @@
 <p>settings-page works!</p>
+<form [formGroup]="formSetting">
+  <input-app [formControl]="formSetting.controls.name" [name]="'name'" label="Name" placeholder="Put your name"></input-app>
+  <input-app [formControl]="formSetting.controls.age" [name]="'age'" label="Age" placeholder="Put your age"></input-app>
+  <button (click)="onSubmit()">Enviar datos</button>
+</form>

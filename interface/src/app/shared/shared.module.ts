@@ -7,6 +7,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalConfirmDeleteComponent } from './components/modal-confirm-delete/modal-confirm-delete.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import { ModalConfirmDeleteComponent } from './components/modal-confirm-delete/m
     ButtonComponent,
     ModalConfirmDeleteComponent
   ],
-  imports: [
-    CommonModule,
-    SharedRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        SharedRoutingModule,
+        ReactiveFormsModule
+    ],
   exports:[
     ModalComponent,
-    ModalConfirmDeleteComponent
+    ModalConfirmDeleteComponent,
+    InputComponent
   ]
 })
 export class SharedModule { }
