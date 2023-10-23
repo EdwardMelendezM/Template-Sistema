@@ -7,20 +7,30 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./settings-page.component.css']
 })
 export class SettingsPageComponent {
-  fb = inject(FormBuilder)
-  loginForm = this.fb.group({
-    username: ['', [
-      Validators.required,
-      Validators.minLength(3)
-    ]],
-    password: ['', [
-      Validators.required,
-      Validators.minLength(3)
-    ]],
-  });
+  name = 'Angular';
+  formData!: FormGroup;
+  ngOnInit() {
+    this.createForm();
+  }
 
-  onSubmit(){
-    console.log(this.loginForm.value)
-    console.log("Hello")
+  createForm() {
+    this.formData = new FormGroup({
+      userName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
+    });
+  }
+
+  onSubmit(form: any) {
+    console.log(form);
   }
 }

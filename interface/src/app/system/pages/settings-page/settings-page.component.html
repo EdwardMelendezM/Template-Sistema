@@ -1,11 +1,35 @@
-  <input-app label="Username"
-             controlName="username"
-             placeholder="Enter your username"
-             [parentForm]="loginForm">></input-app>
+<div>
+  <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
+    <app-input
+      label="Username"
+      placeholder="Enter Username"
+      type="text"
+      [required]="true"
+      [control]="$any(formData.get('userName'))"
+    >
+    </app-input>
 
-  <input-app label="Password"
-             controlName="password"
-             placeholder="Enter your password"
-             [parentForm]="loginForm">></input-app>
+    <app-input
+      label="First Name"
+      placeholder="Enter Firstname"
+      type="text"
+      [required]="true"
+      [control]="$any(formData.get('firstName'))"
+    >
+    </app-input>
 
-  <button (click)="onSubmit()" type="submit">Login</button>
+
+    <app-input
+      label="Last Name"
+      placeholder="Enter Last Name"
+      type="text"
+      [required]="true"
+      [control]="$any(formData.get('lastName'))"
+    >
+    </app-input>
+
+    <div>
+      <button [disabled]="formData.invalid">Submit</button>
+    </div>
+  </form>
+</div>
