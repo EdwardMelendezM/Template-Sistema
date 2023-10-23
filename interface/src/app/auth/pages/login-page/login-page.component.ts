@@ -7,7 +7,7 @@ import { AuthService } from '../../service/auth.service';
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
-}) 
+})
 export class LoginPageComponent {
 
   fb = inject(FormBuilder)
@@ -21,7 +21,7 @@ export class LoginPageComponent {
     password: ['', [
       Validators.required,
       Validators.minLength(3)
-    ]], 
+    ]],
   });
 
   constructor(){
@@ -39,7 +39,7 @@ export class LoginPageComponent {
       this.formLogin.get('password')?.enable()
     }
     console.log("Consumiendo api");
-    
+
   }
 
 
@@ -60,6 +60,6 @@ export class LoginPageComponent {
     }
 
     this.authService.login(body)
-  
+
   }
 }

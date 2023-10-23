@@ -1,7 +1,6 @@
-<div class="form-group">
+<!-- input-label.component.html -->
+<form [formGroup]="parentForm">
   <label>{{ label }}</label>
-  <input [formControl]="formControl"
-         [name]="name"
-         [placeholder]="placeholder"
-         [type]="type" />
-</div>
+  <input [formControlName]="controlName"
+         [placeholder]="placeholder" />
+</form>

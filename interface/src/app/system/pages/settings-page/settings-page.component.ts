@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-settings-page',
@@ -7,13 +7,20 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./settings-page.component.css']
 })
 export class SettingsPageComponent {
-  formSetting = new FormGroup({
-    name: new FormControl(""),
-    age: new FormControl(""),
+  fb = inject(FormBuilder)
+  loginForm = this.fb.group({
+    username: ['', [
+      Validators.required,
+      Validators.minLength(3)
+    ]],
+    password: ['', [
+      Validators.required,
+      Validators.minLength(3)
+    ]],
   });
 
-  onSubmit() {
-    console.log("enviando data");
-    console.log(this.formSetting.value);
+  onSubmit(){
+    console.log(this.loginForm.value)
+    console.log("Hello")
   }
 }
